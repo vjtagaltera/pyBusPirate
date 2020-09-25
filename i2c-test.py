@@ -27,14 +27,14 @@ from pyBusPirateLite.I2C import *
 
 def i2c_write_data(data):
 	i2c.send_start_bit()
-	i2c.bulk_trans(len(data),data)
+	i2c.bulk_trans(data)
 	i2c.send_stop_bit()
 
 
 def i2c_read_bytes(address, numbytes, ret=False):
 	data_out=[]
 	i2c.send_start_bit()
-	i2c.bulk_trans(len(address),address)
+	i2c.bulk_trans(address)
 	while numbytes > 0:
 		if not ret:
 			print ord(i2c.read_byte())
